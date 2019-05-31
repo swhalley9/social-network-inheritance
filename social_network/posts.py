@@ -16,7 +16,8 @@ class Post(object):
 
 class TextPost(Post):  # Inherit properly
     def __init__(self, text, timestamp=None):
-        super().__init__(text, timestamp)
+        #super().__init__(text, timestamp)
+        super(TextPost,self).__init__(text,timestamp)
 
     def __str__(self):
         return '@{first_name} {last_name}: "{text}"\n\t{timestamp}'.format(first_name=self.user.first_name,last_name=self.user.last_name,text=self.text,timestamp=self.timestamp.strftime("%A, %b %d, %Y"))
@@ -25,7 +26,8 @@ class TextPost(Post):  # Inherit properly
 class PicturePost(Post):  # Inherit properly
     def __init__(self, text, image_url, timestamp=None):
         self.image_url = image_url
-        super().__init__(text,timestamp)
+        #super().__init__(text,timestamp)
+        super(PicturePost,self).__init__(text,timestamp)
 
     def __str__(self):
         return '@{first_name} {last_name}: "{text}"\n\t{image_url}\n\t{timestamp}'.format(first_name=self.user.first_name,last_name=self.user.last_name,text=self.text,image_url=self.image_url,timestamp=self.timestamp.strftime("%A, %b %d, %Y"))
@@ -35,7 +37,9 @@ class CheckInPost(Post):  # Inherit properly
     def __init__(self, text, latitude, longitude, timestamp=None):
         self.latitude = latitude
         self.longitude = longitude
-        super().__init__(text, timestamp)
+        #super().__init__(text, timestamp)
+        super(CheckInPost,self).__init__(text,timestamp)
 
     def __str__(self):
         return '@{first_name} Checked In: "{text}"\n\t{latitude}, {longitude}\n\t{timestamp}'.format(first_name=self.user.first_name,text=self.text,latitude=self.latitude,longitude=self.longitude,timestamp=self.timestamp.strftime("%A, %b %d, %Y"))
+
